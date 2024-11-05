@@ -13,8 +13,10 @@ Documentation about querying Pandas Dataframes is at: https://pandas.pydata.org/
 
 A Dockerfile (https://www.docker.com/) is available:
 docker build --tag tpfliss/bikemaps2 . 
-dockder run -it /bin/bash
-docker run -p 8888:8888 -v `pwd`/nb:/nb -v -v `pwd`/Street_Network_Database:/snd -it tpfliss/bikemaps2 /bin/bash
+dockder run -it tpfliss/bikemaps2 /bin/bash
+mkdir -p data/Street_Network_Database
+cd data/Street_Network_Database && { curl -O https://data.seattle.gov/dataset/Street-Network-Database/afip-2mzr }
+docker run -p 8888:8888 -v "`pwd`/nb":/nb -v -v "`pwd`/Street_Network_Database":/snd -it tpfliss/bikemaps2 /bin/bash
 cd /nb
 jupyter notebook --ip=0.0.0.0
 

@@ -18,10 +18,16 @@ difficulties = { 'u' : UNCLASSIFIED,
                  'i' : INTERMEDIATE,
                  'd' : DIFFICULT }
 
+#_BACKGROUND=basemaps.Stamen.Watercolor
+#_BACKGROUND=basemaps.Strava.Ride
+#_BACKGROUND=basemaps.CartoDB.Positron
+#_BACKGROUND=basemaps.Stamen.Toner
+_BACKGROUND=basemaps.Esri.NatGeoWorldMap
+
 def get_map(coords):
     get_map.folium_map = Map(
         center=coords, zoom=10,
-        basemap=basemaps.Stamen.Watercolor)
+        basemap=_BACKGROUND)
 
     return get_map.folium_map
 
